@@ -12,34 +12,32 @@ function Post(props) {
     height: "180px",
   };
 
-  const [post, setPost] = useState("Post something here");
-  const [edit, setEdit] = useState("");
-  const [text, setText] = useState("");
-
-  const editPost = "";
-
   const handleChangeText = (event) => {
-    return setText(event.target.value);
+    props.setText(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setEdit(text);
-    if (text !== "") {
-      setPost(text);
-      props.setToggle(!props.toggle);
+    if (props.text !== "") {
+      props.setPost(props.text);
+      props.setIsEdit("");
+    } else {
+      props.setPost("Post something here");
+      props.setIsEdit("");
     }
   };
 
   return (
     <div style={post_container}>
-      {props.isEdit ? (
-        <p>{post}</p>
-      ) : props.toggle ? (
-        <p>{post}</p>
+      {!props.isEdit ? (
+        <p>{props.post}</p>
       ) : (
         <form onSubmit={handleSubmit}>
-          <input style={post_input} value={text} onChange={handleChangeText} />
+          <input
+            style={post_input}
+            value={props.text}
+            onChange={handleChangeText}
+          />
         </form>
       )}
     </div>

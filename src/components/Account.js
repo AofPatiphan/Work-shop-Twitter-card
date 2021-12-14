@@ -1,4 +1,4 @@
-function Account({ name, setIsEdit }) {
+function Account({ name, setIsEdit, isEdit, setText }) {
   const account_container = {
     display: "flex",
     justifyContent: "space-between",
@@ -12,7 +12,8 @@ function Account({ name, setIsEdit }) {
   };
 
   const handleClick = () => {
-    setIsEdit(false);
+    setIsEdit(!isEdit);
+    setText("");
   };
   return (
     <div style={account_container}>

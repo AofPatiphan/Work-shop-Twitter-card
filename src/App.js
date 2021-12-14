@@ -18,19 +18,30 @@ function App() {
     width: "600px",
   };
 
-  const [isEdit, setIsEdit] = useState(true);
-  const [toggle, setToggle] = useState(true);
+  const [isEdit, setIsEdit] = useState("");
+  const [post, setPost] = useState("Post something here");
+  const [text, setText] = useState("");
 
   return (
     <div style={card_container}>
       <Profile />
       <div style={content_container}>
-        <Account name="เป็นลก@609_exe_555" setIsEdit={setIsEdit} />
+        <Account
+          name="เป็นลก@609_exe_555"
+          setIsEdit={setIsEdit}
+          isEdit={isEdit}
+          post={post}
+          setPost={setPost}
+          text={text}
+          setText={setText}
+        />
         <Post
           isEdit={isEdit}
           setIsEdit={setIsEdit}
-          toggle={toggle}
-          setToggle={setToggle}
+          post={post}
+          setPost={setPost}
+          text={text}
+          setText={setText}
         />
         <Img />
         <Int />
